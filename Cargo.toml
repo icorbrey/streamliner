@@ -1,0 +1,39 @@
+[package]
+name = "streamliner"
+description = "A sane RSS reader for the modern age."
+repository = "https://github.com/icorbrey/streamliner"
+license = "GPL-3.0-only"
+version = "0.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "streamliner_core"
+path = "src/lib.rs"
+
+[[bin]]
+name = "streamliner"
+path = "src/main.rs"
+
+[dependencies]
+color-eyre = "0.6.2"
+const_panic = "0.2.8"
+rayon = "1.8.1"
+rstest = "0.18.2"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+enum_glob_use = "deny"
+pedantic = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+unwrap_used = "deny"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
