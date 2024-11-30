@@ -21,6 +21,16 @@ color-eyre = "0.6.2"
 const_panic = "0.2.8"
 rayon = "1.8.1"
 rstest = "0.18.2"
+tokio = "1.41.1"
+
+[dependencies.sqlx]
+version = "0.8.2"
+features = [
+  "tls-native-tls",
+  "runtime-tokio",
+  "macros",
+  "sqlite",
+]
 
 [lints.rust]
 unsafe_code = "forbid"

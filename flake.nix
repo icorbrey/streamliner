@@ -15,13 +15,22 @@
         defaultPackage = naersk-lib.buildPackage ./.;
         devShell = with pkgs; mkShell {
           RUST_SRC_PATH = rustPlatform.rustLibSrc;
+
+          nativeBuildInputs = [
+            pkg-config
+          ];
+          
           buildInputs = [
             rustPackages.clippy
             pre-commit
             sqlx-cli
+            openssl
             rustfmt
             cargo
             rustc
+          ] ++ lib.optionals pkgs.stdenv.isDarwin [
+            darwin.apple_sdk.frameworks.Security
+            libiconv
           ];
         };
       }
