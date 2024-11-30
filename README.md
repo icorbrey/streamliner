@@ -14,15 +14,29 @@ A sane RSS reader for the modern age.
 - [ ] **Inline viewer**: Allow rendering the contents of posts inside the
   application instead of just listing URLs.
 
+## Installation
+
+Currently, installation is only supported via Cargo:
+
+```sh
+cargo install streamliner
+```
+
 ## Contributing
 
 Clone the repository and download dependencies:
 
-```
+```sh
 git clone https://github.com/icorbrey/streamliner.git
 cd streamliner
-cargo run
+nix develop
+cargo build
 ```
+
+If you're not using Nix, make sure you have the following development tools
+installed:
+
+- [`sqlx-cli`][sqlx-cli]
 
 ## License
 
@@ -30,3 +44,4 @@ Streamliner is distributed under the GPLv3 license. See [LICENSE][license] for
 details.
 
 [license]: ./LICENSE
+[sqlx-cli]: https://github.com/launchbadge/sqlx/tree/main/sqlx-cli
